@@ -17,7 +17,7 @@
     }
     protected override IEnumerable<string> GetMetaPatialSignatures(Item contextItem)
     {
-      var metaPartials = presentationContext.GetPartialDesignsItem(contextItem)?.Children.Where(partial => partial.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.MetadataPartialDesign.ID));
+      var metaPartials = presentationContext.GetPartialDesignsItem(contextItem)?.Children.Where(partial => partial.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.MetadataPartialDesign.ID) || partial.InheritsFrom(Sitecore.XA.Foundation.Presentation.Templates.PartialDesign.ID));
       IEnumerable<string> signatures = metaPartials?.Select(partial => $"sxa-{partial[Sitecore.XA.Foundation.Presentation.Templates.PartialDesign.Fields.Signature]}").ToList();
       return signatures ?? new List<string>();
     }
